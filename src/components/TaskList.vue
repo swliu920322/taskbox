@@ -16,8 +16,6 @@ export default {
     const store = useStore();
 
     //👇 Retrieves the tasks from the store's state
-    console.log(useStore)
-    console.log(useStore())
     const tasks = computed(() => store.state.tasks);
 
     //👇 Dispatches the actions back to the store

@@ -2,27 +2,30 @@ import PureTaskList from './PureTaskList.vue';
 
 import * as TaskStories from './Task.stories';
 
+// 默认导出，
 export default {
     component: PureTaskList,
-    title: 'PureTaskList',
-    decorators: [
-        () => ({template: '<div style="margin: 3em;"><story/></div>'}),
-    ],
+    title: 'TaskList',
+    // 展示模板，类似slot
+    decorators: [() => ({template: '<div style="margin: 3em;"><story/></div>'})],
+    // emit
     argTypes: {
         onPinTask: {},
         onArchiveTask: {},
     },
 };
-
-const Template = (args, {argTypes}) => ({
+// 测试模板，下面只要配置不同的参数就可以使用同一份测试模板
+const Template = args => ({
     components: {PureTaskList},
     setup() {
         return {args, ...TaskStories.actionsData};
     },
-    template: '<PureTaskList v-bind="args"  tasks=""/>',
+    template: '<PureTaskList v-bind="args" />',
 });
 
+// 测试的组件,会自动根据命名去展示
 export const Default = Template.bind({});
+// 传入参数
 Default.args = {
     // Shaping the stories through args composition.
     // The data was inherited from the Default story in task.stories.js.
