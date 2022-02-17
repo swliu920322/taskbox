@@ -19,6 +19,7 @@ export default {
     const tasks = computed(() => store.state.tasks);
 
     //👇 Dispatches the actions back to the store
+    console.log(store)
     const archiveTask = task => store.dispatch('archiveTask', task);
     const pinTask = task => store.dispatch('pinTask', task);
 
